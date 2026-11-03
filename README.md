@@ -42,8 +42,8 @@ curl -fL -o ms_install_5.2.8.tar.gz https://valut.iptvtools.io/MidnightStreamer/
 export MS_PAYLOAD_SHA256=$(sha256sum ms_install_5.2.8.tar.gz | awk '{print $1}')
 
 # 2) bootstrap: descarga a archivo, verifica sha256, pide confirmación y ejecuta
-curl -fsSL -O https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/main/install.sh
-curl -fsSL -O https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/main/install.sh.sha256
+curl -fsSL -O https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/v0.1.0/install.sh
+curl -fsSL -O https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/v0.1.0/install.sh.sha256
 sha256sum -c install.sh.sha256          # si falla, NO ejecutes
 
 sudo MS_PAYLOAD_SHA256="$MS_PAYLOAD_SHA256" bash install.sh

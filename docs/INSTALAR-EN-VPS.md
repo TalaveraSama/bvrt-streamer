@@ -48,7 +48,7 @@ echo "$MS_PAYLOAD_SHA256"
 
 ```bash
 cd /root
-curl -fsSL -O https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/main/tools/scan_payload.sh
+curl -fsSL -O https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/v0.1.0/tools/scan_payload.sh
 
 mkdir -p /root/ms-payload
 tar -xzf ms_install_5.2.8.tar.gz -C /root/ms-payload
@@ -64,8 +64,8 @@ Esto es lo único que puede decirte qué hay dentro del CMS, porque yo no pude d
 
 ```bash
 cd /root
-curl -fsSL -O https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/main/install.sh
-curl -fsSL -O https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/main/install.sh.sha256
+curl -fsSL -O https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/v0.1.0/install.sh
+curl -fsSL -O https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/v0.1.0/install.sh.sha256
 
 # verificación: si esto falla, NO ejecutes nada
 sha256sum -c install.sh.sha256
@@ -108,7 +108,7 @@ Panel: `http://<tu-ip>:8000/admin`
 
 ```bash
 cd /root
-curl -fsSL -O https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/main/tools/vps_audit.sh
+curl -fsSL -O https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/v0.1.0/tools/vps_audit.sh
 bash vps_audit.sh --out /root/audit-postinstall.txt
 ```
 
@@ -140,8 +140,8 @@ Si algo no funciona y quieres comparar con el original:
 
 ```bash
 cd /root
-curl -fsSL -o original.sh https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/main/upstream/ms_install_offline.sh
-curl -fsSL -o hardened.sh https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/main/installer/ms_install_offline.sh
+curl -fsSL -o original.sh https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/v0.1.0/upstream/ms_install_offline.sh
+curl -fsSL -o hardened.sh https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/v0.1.0/installer/ms_install_offline.sh
 diff -u original.sh hardened.sh | less
 ```
 

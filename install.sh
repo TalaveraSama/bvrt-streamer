@@ -29,7 +29,7 @@
 set -uo pipefail
 
 MS_REPO="TalaveraSama/bvrt-streamer"
-MS_REF="${MS_REF:-main}"
+MS_REF="${MS_REF:-v0.1.0}"
 MS_BASE="https://raw.githubusercontent.com/${MS_REPO}/${MS_REF}"
 
 RED='\033[0;31m'; GRN='\033[0;32m'; YEL='\033[93m'; CYA='\033[96m'; NC='\033[0m'
