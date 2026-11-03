@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Auditoría MidnightStreamer · bvrt-streamer</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#141b23; --panel2:#1b242e; --line:#26303a;
+    --txt:#e6edf3; --dim:#9aa7b4; --crit:#f2555a; --high:#f08c2e;
+    --med:#d8ba3a; --info:#5aa9e6; --ok:#3fb950;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:48px 24px 96px}
+  header{border-bottom:1px solid var(--line);padding-bottom:28px;margin-bottom:20px}
+  h1{font-size:30px;margin:0 0 8px;letter-spacing:-.4px}
+  h1 span{color:var(--crit)}
+  .sub{color:var(--dim);font-size:14px}
+  .sub code{background:var(--panel2);padding:2px 6px;border-radius:4px;font-size:12.5px}
+  h2{font-size:20px;margin:44px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  h3{font-size:16px;margin:26px 0 8px}
+  p{margin:10px 0}
+  a{color:var(--info)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px}
+  pre{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--crit);
+      border-radius:6px;padding:14px 16px;overflow-x:auto;font-size:12.5px;line-height:1.55}
+  pre .c{color:#7d8b99}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:26px 0}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px}
+  .stat .n{font-size:28px;font-weight:700;line-height:1}
+  .stat .l{color:var(--dim);font-size:12px;margin-top:6px;text-transform:uppercase;letter-spacing:.6px}
+  .c-crit .n{color:var(--crit)} .c-high .n{color:var(--high)}
+  .c-med .n{color:var(--med)}  .c-info .n{color:var(--info)}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+  tr:hover td{background:var(--panel)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11px;font-weight:600;
+       text-transform:uppercase;letter-spacing:.4px}
+  .t-crit{background:rgba(242,85,90,.15);color:var(--crit);border:1px solid rgba(242,85,90,.4)}
+  .t-high{background:rgba(240,140,46,.15);color:var(--high);border:1px solid rgba(240,140,46,.4)}
+  .t-med{background:rgba(216,186,58,.15);color:var(--med);border:1px solid rgba(216,186,58,.4)}
+  .t-info{background:rgba(90,169,230,.15);color:var(--info);border:1px solid rgba(90,169,230,.4)}
+  .t-ok{background:rgba(63,185,80,.15);color:var(--ok);border:1px solid rgba(63,185,80,.4)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:8px;
+        padding:18px 20px;margin:14px 0}
+  .card.crit{border-left:3px solid var(--crit)}
+  .card.high{border-left:3px solid var(--high)}
+  .card.med{border-left:3px solid var(--med)}
+  .card h3{margin-top:0}
+  .meta{color:var(--dim);font-size:12.5px;margin-bottom:10px;font-family:ui-monospace,monospace}
+  .note{border-left:3px solid var(--info);background:rgba(90,169,230,.07);padding:12px 16px;
+        border-radius:0 6px 6px 0;margin:18px 0;font-size:14px}
+  .warn{border-left:3px solid var(--high);background:rgba(240,140,46,.07);padding:12px 16px;
+        border-radius:0 6px 6px 0;margin:18px 0;font-size:14px}
+  ul{margin:10px 0;padding-left:22px} li{margin:6px 0}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);
+         color:var(--dim);font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Auditoría de seguridad · <span>MidnightStreamer</span></h1>
+  <p class="sub">
+    Repo: <code>TalaveraSama/bvrt-streamer</code> · rama <code>arena/9e28ac63-bvrt-streamer</code><br>
+    Objetivo: <code>MDS-Unofficial/MidnightStreamer :: ms_install_offline.sh</code><br>
+    SHA256 <code>57af018e…65885</code> · 32 047 bytes · 525 líneas · 2026-11-03
+  </p>
+</header>
+
+<div class="stats">
+  <div class="stat c-crit"><div class="n">5</div><div class="l">Críticos</div></div>
+  <div class="stat c-high"><div class="n">7</div><div class="l">Altos</div></div>
+  <div class="stat c-med"><div class="n">5</div><div class="l">Medios</div></div>
+  <div class="stat c-info"><div class="n">22</div><div class="l">Parches aplicados</div></div>
+</div>
+
+<div class="warn">
+  <strong>Alcance real de esta auditoría.</strong> El payload <code>ms_install_5.2.8.tar.gz</code> no pudo
+  descargarse: <code>valut.iptvtools.io</code> resuelve a BunnyCDN (<code>169.150.249.163</code>) pero la
+  conexión TLS se corta, y el entorno solo tiene salida a GitHub/npm/PyPI. Por eso lo auditado es el
+  <strong>instalador</strong>, que sí es público y Verificable, más el <strong>escáner</strong> para el payload
+  en cuanto lo tengas. No afirmo nada sobre el PHP del panel que no haya podido leer.
+</div>
+
+<h2>1 · Veredicto</h2>
+<p>
+  El instalador <strong>no es un troyano evidente</strong>: no descarga binarios ocultos, no contiene
+  <code>curl | bash</code>, no tiene ofuscación. Pero deja el servidor en un estado que equivale a
+  comprometido en cuanto alguien alcanza el puerto <code>7999</code> o consigue una ejecución de PHP:
+  regala <strong>root sin contraseña</strong>, publica <strong>las mismas credenciales para todos los
+  clientes</strong> del producto, y <strong>desactiva las dos capas de auditoría</strong> del sistema
+  (SELinux y los logs de cron/sudo).
+</p>
+<p>
+  La combinación H-04 + H-11 + H-12 es la que más preocupa: credenciales conocidas de administrador,
+  escalada a root sin contraseña y borrado de los logs que permitirían ver la escalada. Cada una por
+  separado es un error de configuración; juntas son un patrón.
+</p>
+
+<h2>2 · Críticos</h2>
+
+<div class="card crit">
+  <h3>H-03 · MariaDB accesible desde cualquier host, con SUPER</h3>
+  <div class="meta">ms_install_offline.sh:453-462</div>
+<pre><span class="c">-- password idéntica en todas las instalaciones del mundo:</span>
+GRANT ALL PRIVILEGES ON midnight_iptv.* TO 'midnightstreamer'@'%' IDENTIFIED BY 'pglauD4F0L';
+GRANT SUPER ON *.*                      TO 'midnightstreamer'@'%' IDENTIFIED BY 'pglauD4F0L';</pre>
+  <p>Quien alcance el puerto 7999 entra como superusuario, lee y escribe cualquier base y puede usar
+  <code>SELECT … INTO OUTFILE</code> para escribir archivos como el usuario <code>mysql</code>.</p>
+  <p><strong>Parche:</strong> <span class="tag t-ok">HARDENING 14</span> bind loopback, usuario solo
+  <code>@localhost</code>, sin <code>SUPER</code>, password aleatoria.</p>
+</div>
+
+<div class="card crit">
+  <h3>H-04 · Administrador y claves del panel hardcodeados</h3>
+  <div class="meta">ms_install_offline.sh:451-452 · 524</div>
+<pre>VALUES ('admin', '2cd71063c6a79832cdfeb889f4c072e425067fe2', …);
+UPDATE settings SET preview_pass='hn6SImdyx7',
+  stalker_key='02230129b6ad71bae0292032450090cd', api_key='dtqVa5xwoU';</pre>
+  <p>El script termina imprimiendo <em>«Username: admin / Password: iptv»</em>. Las claves
+  <code>stalker_key</code> y <code>api_key</code> públicas permiten emitir peticiones firmadas contra
+  cualquier panel que no las haya cambiado.</p>
+  <p><strong>Parche:</strong> <span class="tag t-ok">HARDENING 15</span> password + claves aleatorias, en
+  <code>/root/.midnightstreamer.credentials</code> a 0600.</p>
+</div>
+
+<div class="card crit">
+  <h3>H-11 · <code>NOPASSWD:ALL</code> para el usuario del panel</h3>
+  <div class="meta">ms_install_offline.sh:335-337</div>
+<pre>echo "midnightstreamer ALL = (ALL) NOPASSWD:ALL" >> /etc/sudoers</pre>
+  <p>Cualquier RCE en el PHP del panel pasa a root sin contraseña. Es la diferencia entre
+  «me tumbaron el panel» y «me tomaron el servidor».</p>
+  <p><strong>Parche:</strong> <span class="tag t-ok">HARDENING 16</span> no se toca <code>/etc/sudoers</code>
+  y se elimina la regla si ya existe.</p>
+</div>
+
+<div class="card crit">
+  <h3>H-06 · Repos APT sin firma, EOL, por HTTP</h3>
+  <div class="meta">ms_install_offline.sh:216-232</div>
+<pre>echo "deb [trusted=yes] http://httpredir.debian.org/debian jessie …" > …/midnightstreamer.list
+echo "deb [trusted=yes] http://de.archive.ubuntu.com/ubuntu/ trusty …" >> …</pre>
+  <p><code>[trusted=yes]</code> desactiva la verificación GPG: lo que responda a esa URL se instala como
+  root. Jessie y Trusty llevan sin soporte desde 2020 y 2019. Todo por HTTP claro. Y el archivo
+  <strong>nunca se borra</strong>, así que sigue activo para los <code>apt-get install</code> futuros.</p>
+  <p><strong>Parche:</strong> <span class="tag t-ok">HARDENING 6</span> se elimina el archivo y se usan los
+  repos del sistema.</p>
+</div>
+
+<div class="card crit">
+  <h3>H-07 · SELinux desactivado de forma permanente</h3>
+  <div class="meta">ms_install_offline.sh:124-125</div>
+<pre>setenforce 0
+sed -i 's/enforcing/disabled/g' /etc/selinux/config</pre>
+  <p>Ninguna razón funcional lo justifica: si hubiera conflicto de contextos, se resuelve con
+  <code>semanage</code>/<code>restorecon</code>. Aquí se apaga la única contención del sistema.</p>
+  <p><strong>Parche:</strong> <span class="tag t-ok">HARDENING 5</span> no se desactiva; relabel opcional con
+  <code>MS_SELINUX_RELABEL=1</code>.</p>
+</div>
+
+<h2>3 · Altos</h2>
+<table>
+  <thead><tr><th>ID</th><th>Hallazgo</th><th>Línea</th><th>Impacto</th></tr></thead>
+  <tbody>
+    <tr><td>H-01</td><td><code>rm -rf *</code> en el home sin comprobar contenido</td><td>57-61</td>
+      <td>Borra backups, <code>.ssh</code> y volúmenes del usuario si ya existía</td></tr>
+    <tr><td>H-02</td><td><code>pkill -9 php</code> / <code>pkill -9 ffmpeg</code></td><td>27-29</td>
+      <td>Mata procesos ajenos: otros paneles, transcodificaciones, grabaciones</td></tr>
+    <tr><td>H-12</td><td>rsyslog configurado para tirar logs de <code>cron</code> y <code>sudo</code></td><td>468-476</td>
+      <td>Oculta persistencia y escalada — el hallazgo con más «olor»</td></tr>
+    <tr><td>H-08</td><td>Driver NVIDIA del payload, sin checksum, ejecutado como root</td><td>361-370, 387-394</td>
+      <td>Ejecución root de un <code>.run</code> no verificado + blacklist de nouveau</td></tr>
+    <tr><td>H-13</td><td>Certificados a 999 999 días, <code>CN=127.0.0.1</code></td><td>333, 433</td>
+      <td>Clave válida para siempre y TLS que nadie puede validar</td></tr>
+    <tr><td>H-15</td><td><code>chmod -R 755</code> sobre la clave privada de MySQL</td><td>436</td>
+      <td>Clave del servidor de BD legible por cualquier usuario local</td></tr>
+    <tr><td>H-16</td><td>tmpfs <code>mode=0777</code>, <code>size=90%</code>, dentro del docroot</td><td>341-342</td>
+      <td>Escritura libre + DoS por RAM desde un usuario sin privilegios</td></tr>
+  </tbody>
+</table>
+
+<h2>4 · Medios</h2>
+<table>
+  <thead><tr><th>ID</th><th>Hallazgo</th><th>Línea</th><th>Impacto</th></tr></thead>
+  <tbody>
+    <tr><td>H-05</td><td>Payload sin verificación de integridad; nombre de versión fijo <code>5.9.1</code></td><td>67-69</td>
+      <td>Instalas lo que haya en el CDN como root, no lo que crees</td></tr>
+    <tr><td>H-09</td><td>Blobs <code>config</code>/<code>license</code> cifrados, idénticos en todas las instalaciones</td><td>84-85, 450</td>
+      <td>Canal del callback de licencia; prioridad de revisión en el PHP</td></tr>
+    <tr><td>H-10</td><td>PHP/ffmpeg/RPM precompilados sin firmar</td><td>php/, bin/</td>
+      <td>Sin cadena de confianza; el escáner hace <code>strings</code> sobre ellos</td></tr>
+    <tr><td>H-14</td><td><code>rm -rf</code>/<code>mv</code> sobre rutas absolutas no comprobadas</td><td>78-96, 113-121</td>
+      <td>Estado a medias si el payload es de otra versión</td></tr>
+    <tr><td>H-17</td><td><code>DROP DATABASE</code> sin copia previa</td><td>444</td>
+      <td>Reinstalar destruye la base de producción</td></tr>
+  </tbody>
+</table>
+
+<h2>5 · Qué se ha hecho en este fork</h2>
+<table>
+  <thead><tr><th>Archivo</th><th>Qué es</th></tr></thead>
+  <tbody>
+    <tr><td><code>upstream/ms_install_offline.sh</code></td>
+      <td>Copia <strong>sin modificar</strong> del original, para trazabilidad y diff</td></tr>
+    <tr><td><code>installer/ms_install_offline.sh</code></td>
+      <td>Instalador parcheado: 22 bloques <code>[HARDENING n]</code>, cada uno enlazado a su hallazgo</td></tr>
+    <tr><td><code>tools/scan_payload.sh</code></td>
+      <td>Escáner estático de 20 comprobaciones para el <code>.tar.gz</code> extraído</td></tr>
+    <tr><td><code>docs/HALLAZGOS.md</code></td>
+      <td>Este mismo informe en Markdown, con el código citado y el parche de cada punto</td></tr>
+    <tr><td><code>tests/</code> · <code>.github/workflows/</code></td>
+      <td>Pruebas del escáner contra un payload de muestra y CI que valida sintaxis + regresiones</td></tr>
+  </tbody>
+</table>
+
+<div class="note">
+  <strong>Cómo usarlo.</strong> <code>MS_PAYLOAD_SHA256=&lt;hash&gt; sudo ./installer/ms_install_offline.sh</code>
+  para instalar; <code>./tools/scan_payload.sh &lt;dir-extraido&gt;</code> para auditar el payload antes de
+  instalar. El escáner devuelve exit 1 si encuentra algo crítico, así que sirve en CI.
+</div>
+
+<div class="warn">
+  <strong>Lo que este informe NO puede decir.</strong> Sin el payload no puedo afirmar si el CMS contiene
+  webshells, a dónde va realmente el callback de licencia, ni qué hacen los binarios. Esas respuestas
+  salen de <code>tools/scan_payload.sh</code> en cuanto tengas el <code>.tar.gz</code>.
+</div>
+
+<footer>
+  bvrt-streamer · auditoría generada el 2026-11-03 · el original se conserva intacto en
+  <code>upstream/</code> para que puedas verificar cada afirmación con
+  <code>diff -u upstream/ms_install_offline.sh installer/ms_install_offline.sh</code>.
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+# payloads del panel (nunca al repo)
+*.tar.gz
+*.tar.bz2
+*.zip
+ms_install_*.tar.gz
+!installer/*.tar.gz
+
+# artefactos de auditoría locales
+/reports/
+*.json.tmp
+/tmp/
