@@ -28,11 +28,36 @@ Informe completo: **[`docs/auditoria.html`](docs/auditoria.html)** (versión nav
 upstream/         copia sin modificar del instalador auditado (+ Players/README.txt)
 installer/        instalador endurecido: 22 bloques [HARDENING n] ligados a su hallazgo
 tools/            scan_payload.sh — 20 comprobaciones estáticas sobre el .tar.gz extraído
-docs/             auditoria.html + HALLAZGOS.md
+docs/             auditoria.html · HALLAZGOS.md · INSTALAR-EN-VPS.md · ACCESO-SEGURO.md
 tests/            pruebas del escáner contra un payload de muestra
 ```
 
 ## Uso
+
+### Instalar en un servidor (guía completa: [`docs/INSTALAR-EN-VPS.md`](docs/INSTALAR-EN-VPS.md))
+
+```bash
+# 1) payload del panel (lo descargas tú y calculas su hash)
+curl -fL -o ms_install_5.2.8.tar.gz https://valut.iptvtools.io/MidnightStreamer/ms_install_5.2.8.tar.gz
+export MS_PAYLOAD_SHA256=$(sha256sum ms_install_5.2.8.tar.gz | awk '{print $1}')
+
+# 2) bootstrap: descarga a archivo, verifica sha256, pide confirmación y ejecuta
+curl -fsSL -O https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/main/install.sh
+curl -fsSL -O https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/main/install.sh.sha256
+sha256sum -c install.sh.sha256          # si falla, NO ejecutes
+
+sudo MS_PAYLOAD_SHA256="$MS_PAYLOAD_SHA256" bash install.sh
+```
+
+`install.sh` **no** es `curl | bash`: descarga el instalador a un archivo, lo verifica contra
+`installer/ms_install_offline.sh.sha256`, te enseña el resumen, pide escribir `instalar` y solo
+entonces lo ejecuta.
+
+### Auditar el VPS después de instalar
+
+```bash
+bash tools/vps_audit.sh --out /root/audit-postinstall.txt   # solo lectura
+```
 
 ### Auditar un payload antes de instalarlo
 

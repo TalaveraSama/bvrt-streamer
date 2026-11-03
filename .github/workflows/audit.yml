@@ -30,6 +30,11 @@ jobs:
       - name: Pruebas del escáner
         run: ./tests/test_scan.sh
 
+      - name: Los hashes publicados deben coincidir con los archivos
+        run: |
+          ( cd installer && sha256sum -c ms_install_offline.sh.sha256 )
+          test "$(sha256sum install.sh | awk '{print $1}')" = "$(awk '{print $1}' install.sh.sha256)"
+
       - name: El upstream debe coincidir con el hash auditado
         run: |
           echo "57af018eb6cf4b189eae124ed4fa7953c82da26801775f100eb8f624f2965885  upstream/ms_install_offline.sh" | sha256sum -c -
