@@ -71,6 +71,28 @@ curl -fsSL -O https://raw.githubusercontent.com/TalaveraSama/bvrt-streamer/v0.1.
 sha256sum -c install.sh.sha256
 ```
 
+Esperado (v0.1.0):
+
+```text
+install.sh: OK
+```
+
+Si `raw.githubusercontent.com` te falla (DNS, proxy o bloqueo del proveedor), usa la API de
+GitHub, que sirve el mismo contenido:
+
+```bash
+cd /root
+gh_dl() { gh api "repos/TalaveraSama/bvrt-streamer/contents/$1?ref=v0.1.0" --jq .content | base64 -d; }
+gh_dl install.sh                    > install.sh
+gh_dl install.sh.sha256             > install.sh.sha256
+gh_dl tools/scan_payload.sh         > scan_payload.sh
+gh_dl tools/vps_audit.sh            > vps_audit.sh
+sha256sum -c install.sh.sha256
+```
+
+Sin `gh` instalado, la página de la release sirve los mismos archivos:
+<https://github.com/TalaveraSama/bvrt-streamer/releases/tag/v0.1.0>
+
 El `install.sh` a su vez:
 
 1. descarga `installer/ms_install_offline.sh` **a un archivo**, nunca a un pipe;
